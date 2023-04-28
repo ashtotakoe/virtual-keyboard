@@ -1,0 +1,21 @@
+@import "./styles/normalize.scss";
+.keyboard {
+  margin: 30px auto;
+  border: 2px solid black;
+  max-width: 865px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.keyboard__key {
+  width: 50px;
+  height: 50px;
+  border: 1px black solid;
+  margin: 5px;
+  cursor: pointer;
+}
+.keyboard__key.active {
+  background-color: gray;
+  color: white;
+}
