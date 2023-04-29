@@ -3,7 +3,7 @@ export function createNode({
   className = "",
   textContent = "",
   attr = "",
-  parent = "",
+  parent = null,
   listener = "",
   callback = null,
 }) {

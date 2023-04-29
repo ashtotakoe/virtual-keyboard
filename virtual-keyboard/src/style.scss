@@ -1,8 +1,12 @@
 @import "./styles/normalize.scss";
-.keyboard {
+.wrapper {
   margin: 30px auto;
-  border: 2px solid black;
   max-width: 865px;
+}
+.keyboard {
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-top: 30px;
   padding: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -18,4 +22,8 @@
 .keyboard__key.active {
   background-color: gray;
   color: white;
+}
+.textarea {
+  width: 100%;
+  resize: none;
 }
