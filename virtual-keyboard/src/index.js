@@ -2,7 +2,7 @@ import "./style.scss";
 import { keys, keycodes } from "./js-units/keys";
 import { createNode } from "./js-units/create-node";
 import { getTemplate } from "./js-units/get-template";
-import { lightKey } from "./js/key-lighter";
+import { processKey } from "./js/key-lighter";
 import { writeButtons } from "./js/write-buttons";
 
 const wrapper = createNode({
@@ -32,6 +32,7 @@ function init(templ = "small", lang = "eng") {
     createNode({
       textContent: key[template] ? key[template] : key.letter,
       className: "keyboard__key",
+      attr: { "data-code": key.code },
       parent: keyboard,
       listener: "click",
       callback: key.type
@@ -60,8 +61,8 @@ function init(templ = "small", lang = "eng") {
   });
 }
 
-document.addEventListener("keydown", lightKey);
-document.addEventListener("keyup", lightKey);
+document.addEventListener("keydown", processKey);
+document.addEventListener("keyup", processKey);
 init();
 
 document.addEventListener("keypress", (e) => {

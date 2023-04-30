@@ -53,10 +53,12 @@ export const keys = [
   },
   {
     letter: "delete",
+    code: "Backspace",
     type: "functional-key",
   },
   {
     letter: "tab",
+    code: "Tab",
     type: "functional-key",
   },
   {
@@ -145,10 +147,12 @@ export const keys = [
   },
   {
     letter: "enter",
+    code: "Enter",
     type: "functional-key",
   },
   {
     letter: "caps",
+    code: "CapsLock",
     type: "functional-key",
   },
   {
@@ -237,6 +241,7 @@ export const keys = [
   },
   {
     letter: "shift",
+    code: "ShiftLeft",
     type: "functional-key",
   },
   {
@@ -311,10 +316,12 @@ export const keys = [
   },
   {
     letter: "shift",
+    code: "ShiftRight",
     type: "functional-key",
   },
   {
     letter: "lang",
+    code: "ControlLeft",
     type: "functional-key",
   },
 ];
