@@ -1,13 +1,10 @@
-import { textAreaData } from "..";
-
 export function lightKey(event) {
   event.preventDefault();
 
-  const keyboard = document.querySelector(".keyboard");
   const targetKey = event.key;
+  const keyboard = document.querySelector(".keyboard");
   const textarea = document.querySelector(".textarea");
-
-  console.log(keyboard.children);
+  const textAreaData = textarea.value.split("");
 
   for (let key in keyboard.children) {
     const btn = keyboard.children[key];

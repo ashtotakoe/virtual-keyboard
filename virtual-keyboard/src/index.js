@@ -1,50 +1,54 @@
-import './style.scss';
-import { keys } from './js-units/keys';
-import { createNode } from './js-units/create-node';
-import { getTemplate } from './js-units/get-template';
-import { lightKey } from './js/key-lighter';
+import "./style.scss";
+import { keys, keycodes } from "./js-units/keys";
+import { createNode } from "./js-units/create-node";
+import { getTemplate } from "./js-units/get-template";
+import { lightKey } from "./js/key-lighter";
+import { writeButtons } from "./js/write-buttons";
 
 const wrapper = createNode({
-  tag: 'div',
+  tag: "div",
   parent: document.body,
-  className: 'wrapper',
+  className: "wrapper",
 });
 
 const textarea = createNode({
-  tag: 'textarea',
+  tag: "textarea",
   parent: wrapper,
-  className: 'textarea',
-  attr: { autofocus: '' },
+  className: "textarea",
+  attr: { autofocus: "" },
 });
 const keyboard = createNode({
-  tag: 'div',
-  className: 'keyboard',
+  tag: "div",
+  className: "keyboard",
   parent: wrapper,
 });
 
-export const textAreaData = [];
+const textAreaData = [];
 
-function init(templ = 'small', lang = 'eng') {
+function init(templ = "small", lang = "eng") {
   const template = getTemplate(templ, lang);
-  keyboard.replaceChildren();
 
-  for (let key of keys) {
+  keys.forEach((key) => {
     createNode({
       textContent: key[template] ? key[template] : key.letter,
-      className: 'keyboard__key',
+      className: "keyboard__key",
       parent: keyboard,
-      listener: 'click',
+      listener: "click",
       callback: key.type
         ? function () {
-            if (this.textContent === 'caps') {
-              templ === 'small' ? init('big', lang) : init('small', lang);
+            if (this.textContent === "caps") {
+              templ === "small"
+                ? ([templ, lang] = writeButtons("big", lang))
+                : ([templ, lang] = writeButtons("small", lang));
             }
-            if (this.textContent === 'lang') {
-              lang === 'rus' ? init(templ, 'eng') : init(templ, 'rus');
+            if (this.textContent === "lang") {
+              lang === "rus"
+                ? ([templ, lang] = writeButtons(templ, "eng"))
+                : ([templ, lang] = writeButtons(templ, "rus"));
             }
-            if (this.textContent === 'delete') {
+            if (this.textContent === "delete") {
               textAreaData.pop();
-              textarea.value = textAreaData.join('');
+              textarea.value = textAreaData.join("");
               console.log(textarea.selectionEnd);
             }
           }
@@ -53,9 +57,13 @@ function init(templ = 'small', lang = 'eng') {
             textAreaData.push(this.textContent);
           },
     });
-  }
+  });
 }
 
-document.addEventListener('keydown', lightKey);
-document.addEventListener('keyup', lightKey);
+document.addEventListener("keydown", lightKey);
+document.addEventListener("keyup", lightKey);
 init();
+
+document.addEventListener("keypress", (e) => {
+  console.log(e);
+});
