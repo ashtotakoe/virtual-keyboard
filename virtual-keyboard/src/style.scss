@@ -21,12 +21,21 @@
 
   transition: background-color 0.3s, border-radius 0.3s, color 0.3s;
 }
-.keyboard__key.active {
+.keyboard__key.active,
+.keyboard__key:active {
   background-color: gray;
   color: white;
   border-radius: 50%;
 }
+
+.keyboard__key:hover {
+  border-radius: 50%;
+  background-color: rgb(210, 208, 208);
+}
+
 .textarea {
   width: 100%;
+  min-height: 30vh;
+  font-size: 1.3rem;
   resize: none;
 }
