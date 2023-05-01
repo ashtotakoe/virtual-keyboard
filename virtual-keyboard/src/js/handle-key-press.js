@@ -41,7 +41,6 @@ export function handleCommandKey(targetBtn, event) {
 
 export function handleCharacter(targetBtn) {
   if (!targetBtn.pointerType) {
-    // this func can get either an event or button as a param.
     keyboardState.textarea.value += targetBtn.textContent;
     keyboardState.textAreaData.push(targetBtn.textContent);
   } else {
