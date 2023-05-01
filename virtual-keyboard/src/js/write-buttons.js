@@ -1,5 +1,5 @@
-import { getTemplate } from "../js-units/get-template";
-import { keys } from "../js-units/keys";
+import { getTemplate } from "./get-template";
+import { keys } from "./keys";
 
 export function writeButtons(templ = "small", lang = "eng") {
   const template = getTemplate(templ, lang);

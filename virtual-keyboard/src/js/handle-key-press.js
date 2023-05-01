@@ -1,5 +1,5 @@
 import { writeButtons } from "./write-buttons";
-import { keyboardState } from "..";
+import { keyboardState } from "./init";
 
 export function handleCommandKey(targetBtn) {
   if (targetBtn.pointerType) {

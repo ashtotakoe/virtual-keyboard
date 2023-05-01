@@ -1,4 +1,4 @@
-import { keys } from "../js-units/keys";
+import { keys } from "./keys";
 import { handleNormalKey, handleCommandKey } from "./handle-key-press";
 
 export function processKey(event) {
