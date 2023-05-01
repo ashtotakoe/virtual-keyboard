@@ -21,6 +21,15 @@
 
   transition: background-color 0.3s, border-radius 0.3s, color 0.3s;
 }
+.keyboard__key.space {
+  width: 500px;
+}
+.keyboard__key.space.active,
+.keyboard__key.space:active,
+.keyboard__key.space:hover {
+  border-radius: 5%;
+}
+
 .keyboard__key.active,
 .keyboard__key:active {
   background-color: gray;

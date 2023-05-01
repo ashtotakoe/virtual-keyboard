@@ -35,7 +35,7 @@ function createTemplate({ templateConfig, language }) {
   keyboardState.buttons = keys.keys.map((key) =>
     createNode({
       textContent: key[template] ? key[template] : key.letter,
-      className: "keyboard__key",
+      className: key.code === "Space" ? "keyboard__key space" : "keyboard__key",
       attr: { "data-code": key.code },
       parent: keyboard,
       listener: "click",
@@ -47,3 +47,12 @@ function createTemplate({ templateConfig, language }) {
 document.addEventListener("keydown", processKey);
 document.addEventListener("keyup", processKey);
 createTemplate(keyboardState);
+
+function handleClick(event) {
+  const { target } = event;
+  console.log(target.dataset.code);
+}
+
+keyboardState.buttons.forEach((button) =>
+  button.addEventListener("click", handleClick)
+);

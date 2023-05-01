@@ -60,7 +60,8 @@
     {
       "letter": "tab",
       "code": "Tab",
-      "type": "functional-key"
+      "type": "functional-key",
+      "value": "  "
     },
     {
       "letter": "q",
@@ -324,6 +325,10 @@
       "letter": "lang",
       "code": "ControlLeft",
       "type": "functional-key"
+    },
+    {
+      "letter": " ",
+      "code": "Space"
     }
   ]
 }

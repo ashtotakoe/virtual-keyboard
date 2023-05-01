@@ -1,7 +1,7 @@
 import { writeButtons } from "./write-buttons";
 import { keyboardState } from "./create-template";
 
-export function handleCommandKey(targetBtn) {
+export function handleCommandKey(targetBtn, event) {
   if (targetBtn.pointerType) {
     targetBtn = this;
   }
@@ -32,6 +32,11 @@ export function handleCommandKey(targetBtn) {
     keyboardState.textAreaData.pop();
     keyboardState.textarea.value = keyboardState.textAreaData.join("");
   }
+  if (targetBtn.textContent === "shift") handleShift(event);
+  if (targetBtn.textContent === "tab") {
+    keyboardState.textarea.value += "  ";
+    keyboardState.textAreaData.push("  ");
+  }
 }
 
 export function handleCharacter(targetBtn) {
@@ -45,6 +50,14 @@ export function handleCharacter(targetBtn) {
   }
 }
 
-export function handleShift(targetShift) {
-  // same as targetBtn
+export function handleShift(event) {
+  if (!event) return;
+
+  if (event.type === "keydown") {
+    keyboardState.templateConfig === "small"
+      ? writeButtons("big", keyboardState.language)
+      : writeButtons("small", keyboardState.language);
+  } else {
+    writeButtons(keyboardState.templateConfig, keyboardState.language);
+  }
 }
