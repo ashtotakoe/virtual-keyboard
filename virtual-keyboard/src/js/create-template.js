@@ -1,8 +1,8 @@
-import { keys } from "./keys";
+import keys from "../data/keys";
 import { createNode } from "./create-node";
 import { getTemplate } from "./get-template";
 import { processKey } from "./process-key";
-import { handleCommandKey, handleNormalKey } from "./handle-key-press";
+import { handleCommandKey, handleCharacter } from "./handle-key-press";
 
 const wrapper = createNode({
   tag: "div",
@@ -10,43 +10,40 @@ const wrapper = createNode({
   className: "wrapper",
 });
 
-const textarea = createNode({
+export const textarea = createNode({
   tag: "textarea",
   parent: wrapper,
   className: "textarea",
   attr: { autofocus: "" },
 });
-const keyboard = createNode({
+export const keyboard = createNode({
   tag: "div",
   className: "keyboard",
   parent: wrapper,
 });
 
 export const keyboardState = {
-  templ: "small",
-  lang: "eng",
+  templateConfig: "small",
+  language: "eng",
   textAreaData: [],
-  textarea: textarea,
+  textarea,
 };
 
-function init({ templ, lang }) {
-  const template = getTemplate(templ, lang);
+function createTemplate({ templateConfig, language }) {
+  const template = getTemplate(templateConfig, language);
 
-  keys.forEach((key) => {
+  keyboardState.buttons = keys.keys.map((key) =>
     createNode({
       textContent: key[template] ? key[template] : key.letter,
       className: "keyboard__key",
       attr: { "data-code": key.code },
       parent: keyboard,
       listener: "click",
-      callback: key.type ? handleCommandKey : handleNormalKey,
-    });
-  });
+      callback: key.type ? handleCommandKey : handleCharacter,
+    })
+  );
 }
-// document.addEventListener("keypress", (e) => {
-//   console.log(keys.find((button) => button.code === e.code));
-// });
 
 document.addEventListener("keydown", processKey);
 document.addEventListener("keyup", processKey);
-init(keyboardState);
+createTemplate(keyboardState);

@@ -1,2 +1,2 @@
-import "./style.scss";
-import "./js/init";
+import './styles/style.scss';
+import './js/create-template';

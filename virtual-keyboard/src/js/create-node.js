@@ -1,10 +1,10 @@
 export function createNode({
-  tag = "button",
-  className = "",
-  textContent = "",
-  attr = "",
+  tag = 'button',
+  className = '',
+  textContent = '',
+  attr = '',
   parent = null,
-  listener = "",
+  listener = '',
   callback = null,
 }) {
   const node = document.createElement(tag);
@@ -22,6 +22,6 @@ export function createNode({
     node.addEventListener(listener, callback);
   }
 
-  if (parent) parent.appendChild(node);
+  if (parent) { parent.appendChild(node); }
   return node;
 }

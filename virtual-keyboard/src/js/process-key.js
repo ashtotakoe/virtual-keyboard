@@ -1,46 +1,45 @@
-import { keys } from "./keys";
-import { handleNormalKey, handleCommandKey } from "./handle-key-press";
+import keys from "../data/keys";
+import { handleCharacter, handleCommandKey } from "./handle-key-press";
+import { textarea, keyboard, keyboardState } from "./create-template";
 
 export function processKey(event) {
   event.preventDefault();
   const targetKey = event.code;
-  const keyboard = document.querySelector(".keyboard");
-  const textarea = document.querySelector(".textarea");
 
-  let targetBtn = lightKey(event, targetKey, keyboard);
-  if (event.type === "keydown") manageTextArea(targetBtn, textarea, event);
+  const targetBtn = lightKey(event, targetKey, keyboard);
+  if (event.type === "keydown") {
+    manageTextArea(event, targetBtn, textarea);
+  }
 }
 
 function lightKey(event, targetKey, keyboard) {
   let targetBtn = null;
+  const { buttons } = keyboardState;
 
-  for (let i = 0; i < keyboard.children.length; i++) {
-    const btn = keyboard.children[i];
-    if (btn.getAttribute("data-code") === targetKey) {
+  buttons.forEach((button) => {
+    if (button.getAttribute("data-code") === targetKey) {
       if (event.type === "keydown") {
-        btn.classList.add("active");
-        targetBtn = btn;
+        button.classList.add("active");
+        targetBtn = button;
       } else {
-        btn.classList.remove("active");
+        button.classList.remove("active");
       }
-    }
-  }
-  return targetBtn;
-}
-
-function manageTextArea(targetBtn, textarea, event) {
-  if (!keys.find((button) => button.code === event.code)) return;
-
-  const textAreaData = textarea.value.split("");
-  let targetKey;
-  keys.forEach((key) => {
-    if (key.code === targetBtn.getAttribute("data-code")) {
-      targetKey = key;
     }
   });
 
-  if (!targetKey.type) handleNormalKey(targetBtn);
-  if (targetKey) handleCommandKey(targetBtn);
+  return targetBtn;
+}
+
+function manageTextArea(event, targetBtn, textarea) {
+  if (!keys.keys.find((button) => button.code === event.code)) {
+    return;
+  }
+
+  keys.keys.forEach((key) => {
+    if (key.code === targetBtn.getAttribute("data-code")) {
+      key.type ? handleCommandKey(targetBtn) : handleCharacter(targetBtn);
+    }
+  });
 }
 
 /*

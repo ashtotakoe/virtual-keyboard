@@ -1,5 +1,5 @@
 import { writeButtons } from "./write-buttons";
-import { keyboardState } from "./init";
+import { keyboardState } from "./create-template";
 
 export function handleCommandKey(targetBtn) {
   if (targetBtn.pointerType) {
@@ -7,24 +7,24 @@ export function handleCommandKey(targetBtn) {
   }
 
   if (targetBtn.textContent === "caps") {
-    keyboardState.templ === "small"
-      ? ([keyboardState.templ, keyboardState.lang] = writeButtons(
+    keyboardState.templateConfig === "small"
+      ? ([keyboardState.templateConfig, keyboardState.language] = writeButtons(
           "big",
-          keyboardState.lang
+          keyboardState.language
         ))
-      : ([keyboardState.templ, keyboardState.lang] = writeButtons(
+      : ([keyboardState.templateConfig, keyboardState.language] = writeButtons(
           "small",
-          keyboardState.lang
+          keyboardState.language
         ));
   }
   if (targetBtn.textContent === "lang") {
-    keyboardState.lang === "rus"
-      ? ([keyboardState.templ, keyboardState.lang] = writeButtons(
-          keyboardState.templ,
+    keyboardState.language === "rus"
+      ? ([keyboardState.templateConfig, keyboardState.language] = writeButtons(
+          keyboardState.templateConfig,
           "eng"
         ))
-      : ([keyboardState.templ, keyboardState.lang] = writeButtons(
-          keyboardState.templ,
+      : ([keyboardState.templateConfig, keyboardState.language] = writeButtons(
+          keyboardState.templateConfig,
           "rus"
         ));
   }
@@ -34,13 +34,17 @@ export function handleCommandKey(targetBtn) {
   }
 }
 
-export function handleNormalKey(targetBtn) {
+export function handleCharacter(targetBtn) {
   if (!targetBtn.pointerType) {
-    //this func can get either an event or button as a param.
+    // this func can get either an event or button as a param.
     keyboardState.textarea.value += targetBtn.textContent;
     keyboardState.textAreaData.push(targetBtn.textContent);
   } else {
     keyboardState.textarea.value += this.textContent;
     keyboardState.textAreaData.push(this.textContent);
   }
+}
+
+export function handleShift(targetShift) {
+  // same as targetBtn
 }

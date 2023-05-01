@@ -1,17 +1,15 @@
-import { getTemplate } from "./get-template";
-import { keys } from "./keys";
+import { getTemplate } from './get-template';
+import keys from '../data/keys';
+import { keyboard, keyboardState } from './create-template';
 
-export function writeButtons(templ = "small", lang = "eng") {
+export function writeButtons(templ = 'small', lang = 'eng') {
   const template = getTemplate(templ, lang);
-  const keyboard = document.querySelector(".keyboard");
-  let counter = 0;
-  for (let btn of keyboard.children) {
-    if (keys[counter][template]) {
-      btn.textContent = keys[counter][template];
-    } else {
-      btn.textContent = keys[counter].letter;
-    }
-    counter++;
-  }
+
+  keyboardState.buttons.forEach((button, counter) => Object.assign(button, {
+    textContent: keys.keys[counter][template]
+      ? keys.keys[counter][template]
+      : keys.keys[counter].letter,
+  }));
+
   return [templ, lang];
 }
