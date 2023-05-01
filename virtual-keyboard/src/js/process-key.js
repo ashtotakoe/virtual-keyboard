@@ -13,6 +13,12 @@ export function processKey(event) {
   const targetBtn = lightKey(event, targetKey);
   if (event.type === "keydown") manageTextArea(event, targetBtn);
   if (event.type === "keyup") handleShift(event);
+  /* 
+    это лютый костыль. дело в том,
+    что функция handleShift вызывается по цепочке manageTextArea. Но с собой
+    передает только event keydown.
+    второй if как раз докидывает последний event keyup напрямую 
+  */
 }
 
 function lightKey(event, targetKey) {

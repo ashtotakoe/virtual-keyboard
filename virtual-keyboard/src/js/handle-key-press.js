@@ -53,7 +53,7 @@ export function handleCharacter(targetBtn) {
 export function handleShift(event) {
   if (!event) return;
 
-  if (event.type === "keydown") {
+  if (event.type === "keydown" || event.type === "mousedown") {
     keyboardState.templateConfig === "small"
       ? writeButtons("big", keyboardState.language)
       : writeButtons("small", keyboardState.language);

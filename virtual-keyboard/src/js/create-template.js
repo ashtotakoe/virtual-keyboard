@@ -2,7 +2,11 @@ import keys from "../data/keys";
 import { createNode } from "./create-node";
 import { getTemplate } from "./get-template";
 import { processKey } from "./process-key";
-import { handleCommandKey, handleCharacter } from "./handle-key-press";
+import {
+  handleCommandKey,
+  handleCharacter,
+  handleShift,
+} from "./handle-key-press";
 
 const wrapper = createNode({
   tag: "div",
@@ -28,6 +32,14 @@ export const keyboardState = {
   textAreaData: [],
   textarea,
 };
+function getKeyboardState() {
+  if (localStorage.getItem("language")) {
+    keyboardState.language = localStorage.getItem("language");
+  }
+}
+export function setKeyboardState(language) {
+  localStorage.setItem("language", language);
+}
 
 function createTemplate({ templateConfig, language }) {
   const template = getTemplate(templateConfig, language);
@@ -46,13 +58,24 @@ function createTemplate({ templateConfig, language }) {
 
 document.addEventListener("keydown", processKey);
 document.addEventListener("keyup", processKey);
+
+if (!localStorage.getItem("language")) {
+  setKeyboardState(keyboardState.language);
+}
+
+getKeyboardState();
 createTemplate(keyboardState);
 
 function handleClick(event) {
   const { target } = event;
-  console.log(target.dataset.code);
+  keyboardState.buttons.forEach((button) => {
+    if (target.textContent === "shift") {
+      handleShift(event);
+    }
+  });
 }
 
-keyboardState.buttons.forEach((button) =>
-  button.addEventListener("click", handleClick)
-);
+keyboardState.buttons.forEach((button) => {
+  button.addEventListener("mousedown", handleClick);
+  button.addEventListener("mouseup", handleClick);
+});
