@@ -1,0 +1,334 @@
+{
+  "keys": [
+    {
+      "letter": "§",
+      "code": "Backquote"
+    },
+    {
+      "letter": "1",
+      "code": "Digit1"
+    },
+    {
+      "letter": "2",
+      "code": "Digit2"
+    },
+    {
+      "letter": "3",
+      "code": "Digit3"
+    },
+    {
+      "letter": "4",
+      "code": "Digit4"
+    },
+    {
+      "letter": "5",
+      "code": "Digit5"
+    },
+    {
+      "letter": "6",
+      "code": "Digit6"
+    },
+    {
+      "letter": "7",
+      "code": "Digit7"
+    },
+    {
+      "letter": "8",
+      "code": "Digit8"
+    },
+    {
+      "letter": "9",
+      "code": "Digit9"
+    },
+    {
+      "letter": "0",
+      "code": "Digit0"
+    },
+    {
+      "letter": "-",
+      "code": "Minus"
+    },
+    {
+      "letter": "=",
+      "code": "Equal"
+    },
+    {
+      "letter": "delete",
+      "code": "Backspace",
+      "type": "functional-key"
+    },
+    {
+      "letter": "tab",
+      "code": "Tab",
+      "type": "functional-key",
+      "value": "  "
+    },
+    {
+      "letter": "q",
+      "letterBig": "Q",
+      "rusLetter": "й",
+      "rusLetterBig": "Й",
+      "code": "KeyQ"
+    },
+    {
+      "letter": "w",
+      "letterBig": "W",
+      "rusLetter": "ц",
+      "rusLetterBig": "Ц",
+      "code": "KeyW"
+    },
+    {
+      "letter": "e",
+      "letterBig": "E",
+      "rusLetter": "у",
+      "rusLetterBig": "У",
+      "code": "KeyE"
+    },
+    {
+      "letter": "r",
+      "letterBig": "R",
+      "rusLetter": "к",
+      "rusLetterBig": "К",
+      "code": "KeyR"
+    },
+    {
+      "letter": "t",
+      "letterBig": "T",
+      "rusLetter": "е",
+      "rusLetterBig": "Е",
+      "code": "KeyT"
+    },
+    {
+      "letter": "y",
+      "letterBig": "Y",
+      "rusLetter": "н",
+      "rusLetterBig": "Н",
+      "code": "KeyY"
+    },
+    {
+      "letter": "u",
+      "letterBig": "U",
+      "rusLetter": "г",
+      "rusLetterBig": "Г",
+      "code": "KeyU"
+    },
+    {
+      "letter": "i",
+      "letterBig": "I",
+      "rusLetter": "ш",
+      "rusLetterBig": "Ш",
+      "code": "KeyI"
+    },
+    {
+      "letter": "o",
+      "letterBig": "O",
+      "rusLetter": "щ",
+      "rusLetterBig": "Щ",
+      "code": "KeyO"
+    },
+    {
+      "letter": "p",
+      "letterBig": "P",
+      "rusLetter": "з",
+      "rusLetterBig": "З",
+      "code": "KeyP"
+    },
+    {
+      "letter": "[",
+      "letterBig": "[",
+      "rusLetter": "х",
+      "rusLetterBig": "Х",
+      "code": "BracketLeft"
+    },
+    {
+      "letter": "]",
+      "letterBig": "]",
+      "rusLetter": "ъ",
+      "rusLetterBig": "Ъ",
+      "code": "BracketRight"
+    },
+    {
+      "letter": "enter",
+      "code": "Enter",
+      "type": "functional-key"
+    },
+    {
+      "letter": "caps",
+      "code": "CapsLock",
+      "type": "functional-key"
+    },
+    {
+      "letter": "a",
+      "letterBig": "A",
+      "rusLetter": "ф",
+      "rusLetterBig": "Ф",
+      "code": "KeyA"
+    },
+    {
+      "letter": "s",
+      "letterBig": "S",
+      "rusLetter": "ы",
+      "rusLetterBig": "Ы",
+      "code": "KeyS"
+    },
+    {
+      "letter": "d",
+      "letterBig": "D",
+      "rusLetter": "в",
+      "rusLetterBig": "В",
+      "code": "KeyD"
+    },
+    {
+      "letter": "f",
+      "letterBig": "F",
+      "rusLetter": "а",
+      "rusLetterBig": "А",
+      "code": "KeyF"
+    },
+    {
+      "letter": "g",
+      "letterBig": "G",
+      "rusLetter": "п",
+      "rusLetterBig": "П",
+      "code": "KeyG"
+    },
+    {
+      "letter": "h",
+      "letterBig": "H",
+      "rusLetter": "р",
+      "rusLetterBig": "Р",
+      "code": "KeyH"
+    },
+    {
+      "letter": "j",
+      "letterBig": "J",
+      "rusLetter": "о",
+      "rusLetterBig": "О",
+      "code": "KeyJ"
+    },
+    {
+      "letter": "k",
+      "letterBig": "K",
+      "rusLetter": "л",
+      "rusLetterBig": "Л",
+      "code": "KeyK"
+    },
+    {
+      "letter": "l",
+      "letterBig": "L",
+      "rusLetter": "д",
+      "rusLetterBig": "Д",
+      "code": "KeyL"
+    },
+    {
+      "letter": ";",
+      "letterBig": ";",
+      "rusLetter": "ж",
+      "rusLetterBig": "Ж",
+      "code": "Semicolon"
+    },
+    {
+      "letter": "'",
+      "letterBig": "'",
+      "rusLetter": "э",
+      "rusLetterBig": "Э",
+      "code": "Quote"
+    },
+    {
+      "letter": "\\",
+      "letterBig": "\\",
+      "rusLetter": "ё",
+      "rusLetterBig": "Ё",
+      "code": "Backslash"
+    },
+    {
+      "letter": "shift",
+      "code": "ShiftLeft",
+      "type": "functional-key"
+    },
+    {
+      "letter": "z",
+      "letterBig": "Z",
+      "rusLetter": "я",
+      "rusLetterBig": "Я",
+      "code": "KeyZ"
+    },
+    {
+      "letter": "x",
+      "letterBig": "X",
+      "rusLetter": "ч",
+      "rusLetterBig": "Ч",
+      "code": "KeyX"
+    },
+    {
+      "letter": "c",
+      "letterBig": "C",
+      "rusLetter": "с",
+      "rusLetterBig": "С",
+      "code": "KeyC"
+    },
+    {
+      "letter": "v",
+      "letterBig": "V",
+      "rusLetter": "м",
+      "rusLetterBig": "М",
+      "code": "KeyV"
+    },
+    {
+      "letter": "b",
+      "letterBig": "B",
+      "rusLetter": "и",
+      "rusLetterBig": "И",
+      "code": "KeyB"
+    },
+    {
+      "letter": "n",
+      "letterBig": "N",
+      "rusLetter": "т",
+      "rusLetterBig": "Т",
+      "code": "KeyN"
+    },
+    {
+      "letter": "m",
+      "letterBig": "M",
+      "rusLetter": "ь",
+      "rusLetterBig": "Ь",
+      "code": "KeyM"
+    },
+    {
+      "letter": ",",
+      "letterBig": ",",
+      "rusLetter": "б",
+      "rusLetterBig": "Б",
+      "code": "Comma"
+    },
+    {
+      "letter": ".",
+      "letterBig": ".",
+      "rusLetter": "ю",
+      "rusLetterBig": "Ю",
+      "code": "Period"
+    },
+    {
+      "letter": "/",
+      "letterBig": "?",
+      "rusLetter": "/",
+      "rusLetterBig": "?",
+      "code": "Slash"
+    },
+    {
+      "letter": "shift",
+      "code": "ShiftRight",
+      "type": "functional-key"
+    },
+    {
+      "letter": "lang",
+      "code": "ControlLeft",
+      "type": "functional-key"
+    },
+    {
+      "letter": " ",
+      "code": "Space"
+    }
+  ]
+}
