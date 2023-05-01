@@ -1,9 +1,9 @@
 import "./style.scss";
-import { keys, keycodes } from "./js-units/keys";
+import { keys } from "./js-units/keys";
 import { createNode } from "./js-units/create-node";
 import { getTemplate } from "./js-units/get-template";
-import { processKey } from "./js/key-lighter";
-import { writeButtons } from "./js/write-buttons";
+import { processKey } from "./js/process-key";
+import { handleCommandKey, handleNormalKey } from "./js/handle-key-press";
 
 const wrapper = createNode({
   tag: "div",
@@ -23,9 +23,14 @@ const keyboard = createNode({
   parent: wrapper,
 });
 
-const textAreaData = [];
+export const keyboardState = {
+  templ: "small",
+  lang: "eng",
+  textAreaData: [],
+  textarea: textarea,
+};
 
-function init(templ = "small", lang = "eng") {
+function init({ templ, lang }) {
   const template = getTemplate(templ, lang);
 
   keys.forEach((key) => {
@@ -35,36 +40,14 @@ function init(templ = "small", lang = "eng") {
       attr: { "data-code": key.code },
       parent: keyboard,
       listener: "click",
-      callback: key.type
-        ? function () {
-            if (this.textContent === "caps") {
-              templ === "small"
-                ? ([templ, lang] = writeButtons("big", lang))
-                : ([templ, lang] = writeButtons("small", lang));
-            }
-            if (this.textContent === "lang") {
-              lang === "rus"
-                ? ([templ, lang] = writeButtons(templ, "eng"))
-                : ([templ, lang] = writeButtons(templ, "rus"));
-            }
-            if (this.textContent === "delete") {
-              textAreaData.pop();
-              textarea.value = textAreaData.join("");
-              console.log(textarea.selectionEnd);
-            }
-          }
-        : function () {
-            textarea.value += this.textContent;
-            textAreaData.push(this.textContent);
-          },
+      callback: key.type ? handleCommandKey : handleNormalKey,
     });
   });
 }
+// document.addEventListener("keypress", (e) => {
+//   console.log(keys.find((button) => button.code === e.code));
+// });
 
 document.addEventListener("keydown", processKey);
 document.addEventListener("keyup", processKey);
-init();
-
-document.addEventListener("keypress", (e) => {
-  console.log(e);
-});
+init(keyboardState);

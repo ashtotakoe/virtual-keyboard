@@ -1,4 +1,5 @@
 import { keys } from "../js-units/keys";
+import { handleNormalKey, handleCommandKey } from "./handle-key-press";
 
 export function processKey(event) {
   event.preventDefault();
@@ -7,7 +8,7 @@ export function processKey(event) {
   const textarea = document.querySelector(".textarea");
 
   let targetBtn = lightKey(event, targetKey, keyboard);
-  if (event.type === "keydown") manageTextArea(targetBtn, textarea);
+  if (event.type === "keydown") manageTextArea(targetBtn, textarea, event);
 }
 
 function lightKey(event, targetKey, keyboard) {
@@ -27,7 +28,9 @@ function lightKey(event, targetKey, keyboard) {
   return targetBtn;
 }
 
-function manageTextArea(targetBtn, textarea) {
+function manageTextArea(targetBtn, textarea, event) {
+  if (!keys.find((button) => button.code === event.code)) return;
+
   const textAreaData = textarea.value.split("");
   let targetKey;
   keys.forEach((key) => {
@@ -36,26 +39,8 @@ function manageTextArea(targetBtn, textarea) {
     }
   });
 
-  if (!targetKey.type) {
-    textAreaData.push(targetBtn.textContent);
-    textarea.value = textAreaData.join("");
-  }
-  if (targetKey) {
-    if (targetBtn.textContent === "caps") {
-      templ === "small"
-        ? ([templ, lang] = writeButtons("big", lang))
-        : ([templ, lang] = writeButtons("small", lang));
-    }
-    if (targetBtn.textContent === "lang") {
-      lang === "rus"
-        ? ([templ, lang] = writeButtons(templ, "eng"))
-        : ([templ, lang] = writeButtons(templ, "rus"));
-    }
-    if (targetBtn.textContent === "delete") {
-      textAreaData.pop();
-      textarea.value = textAreaData.join("");
-    }
-  }
+  if (!targetKey.type) handleNormalKey(targetBtn);
+  if (targetKey) handleCommandKey(targetBtn);
 }
 
 /*
